@@ -3,16 +3,25 @@
 import ChatContainer from "@/components/ChatContainer";
 import RightSidebar from "@/components/RightSidebar";
 import Sidebar from "@/components/Sidebar";
+import { StaticImageData } from "next/image";
 import { useState } from "react";
+
+type UserType = {
+    _id: string;
+    fullName: string;
+    profilePic?: string | StaticImageData;
+    bio?: string;
+    email?: string;
+};
 
 export default function Home() {
 
-  const [selectUser, setSelectUser] = useState(false);
+  const [selectedUser, setSelectedUser] = useState<UserType | null>(null);
 
   return (
     <div className="w-full h-screen sm:px-[15%] sm:py-[5%]">
-      <div className={`backdrop-blur-xl border-2 border-gray-600 rounded-2xl overflow-hidden h-[100%] grid grid-cols-1 relative ${selectUser ? "md:grid-cols-[1fr_1.5fr_1fr] xl:grid-cols-[1fr_2fr_1fr]" : "md:grid-cols-2"}`}>
-        <Sidebar />
+      <div className={`backdrop-blur-xl border-2 border-gray-600 rounded-2xl overflow-hidden h-[100%] grid grid-cols-1 relative ${selectedUser ? "md:grid-cols-[1fr_1.5fr_1fr] xl:grid-cols-[1fr_2fr_1fr]" : "md:grid-cols-2"}`}>
+        <Sidebar selectedUser={selectedUser} setSelectedUser={setSelectedUser} />
         <ChatContainer />
         <RightSidebar />
       </div>
