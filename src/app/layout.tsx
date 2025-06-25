@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${outfit.variable} antialiased bg-[url("/bgImage.svg")] bg-cover w-full h-screen sm:px-[15%] sm:py-[5%]`}>
+      <body className={`${outfit.variable} antialiased bg-[url("/bgImage.svg")] bg-cover w-full h-screen`}>
         {children}
       </body>
     </html>
