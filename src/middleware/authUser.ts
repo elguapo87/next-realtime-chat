@@ -1,4 +1,3 @@
-// lib/protectRoute.ts
 import { NextRequest, NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
 import userModel from "@/models/userModel";
