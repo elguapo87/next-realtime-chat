@@ -1,3 +1,4 @@
+import connectDB from "@/config/db";
 import { genToken } from "@/lib/genToken";
 import userModel from "@/models/userModel";
 import bcrypt from "bcryptjs";
@@ -7,6 +8,8 @@ export async function POST(req: NextRequest) {
     const { email, password } = await req.json();
     
     try {
+        await connectDB();
+
         const user = await userModel.findOne({ email });
         if (!user) return NextResponse.json({ success: false, message: "Account not exist" });
 
