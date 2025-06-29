@@ -14,8 +14,6 @@ export async function POST(req: NextRequest) {
         const bio = formData.get("bio") as string;
         const imageFile = formData.get("profileImage");
 
-        if (!fullName) return NextResponse.json({ success: false, message: "Full name is required" });
-
         let imageUrl = "";
 
         if (imageFile instanceof File && imageFile.size > 0) {
